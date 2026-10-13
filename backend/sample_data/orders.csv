@@ -1,0 +1,5 @@
+order_id,customer_email,total,placed_at,delivered_at,status
+ext-1001,maria.lopez@example.com,42.50,2026-03-05T18:00:00Z,2026-03-05T19:10:00Z,delivered
+ext-1002,maria.lopez@example.com,31.20,2026-07-21T12:15:00Z,2026-07-21T13:00:00Z,delivered
+ext-1003,dan.okafor@example.com,18.99,2026-05-20T20:40:00Z,,placed
+ext-1004,ghost@example.com,10.00,2026-05-20T20:40:00Z,,placed

@@ -1,0 +1,81 @@
+{
+  "id": "winbackSegments1",
+  "name": "Winback: daily segment refresh",
+  "active": false,
+  "versionId": "5d1e7c40-1a2b-4c3d-8e9f-000000000001",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "a1000000-0001-4000-8000-000000000001",
+      "name": "Every day at 14:00 UTC",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 14 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1000000-0001-4000-8000-000000000003",
+      "name": "Run now",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        500
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "a1000000-0001-4000-8000-000000000002",
+      "name": "Refresh segments + enroll win-back",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://api:8000/api/segments/refresh",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Every day at 14:00 UTC": {
+      "main": [
+        [
+          {
+            "node": "Refresh segments + enroll win-back",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run now": {
+      "main": [
+        [
+          {
+            "node": "Refresh segments + enroll win-back",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

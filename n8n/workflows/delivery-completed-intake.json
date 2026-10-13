@@ -1,0 +1,60 @@
+{
+  "id": "winbackDelivery1",
+  "name": "Winback: delivery-completed intake",
+  "active": false,
+  "versionId": "5d1e7c40-1a2b-4c3d-8e9f-000000000003",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "nodes": [
+    {
+      "id": "a3000000-0003-4000-8000-000000000001",
+      "name": "Delivery completed webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 300],
+      "webhookId": "9b2f4d61-7c3a-4e5b-8d9c-0a1b2c3d4e5f",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "delivery-completed",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "a3000000-0003-4000-8000-000000000002",
+      "name": "Forward to Django",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [240, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "http://api:8000/api/webhooks/delivery-completed",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ event_id: $json.body.event_id, order_id: $json.body.order_id, delivered_at: $json.body.delivered_at }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "a3000000-0003-4000-8000-000000000003",
+      "name": "Respond with result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [480, 300],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Delivery completed webhook": {
+      "main": [[{ "node": "Forward to Django", "type": "main", "index": 0 }]]
+    },
+    "Forward to Django": {
+      "main": [[{ "node": "Respond with result", "type": "main", "index": 0 }]]
+    }
+  }
+}

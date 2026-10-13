@@ -1,0 +1,26 @@
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["**/migrations/*"]
+force-exclude = true
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "DJ"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+  "config",
+  "customers",
+  "orders",
+  "segments",
+  "flows",
+  "messaging",
+  "referrals",
+  "reviews",
+  "compliance",
+  "dashboard",
+]

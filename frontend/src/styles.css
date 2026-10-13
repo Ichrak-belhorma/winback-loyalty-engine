@@ -1,0 +1,196 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --border: #e3e6ea;
+  --text: #1c2430;
+  --muted: #6b7684;
+  --accent: #d9480f;
+  --ok: #1f8a4c;
+  --warn: #b7791f;
+  --bad: #c53030;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 12px;
+}
+
+.cap {
+  text-transform: capitalize;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 32px 0;
+  text-align: center;
+}
+
+.error-banner {
+  background: #fdecec;
+  border: 1px solid #f3b9b9;
+  color: var(--bad);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card,
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.card {
+  padding: 14px 16px;
+}
+
+.card-label {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-value {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 4px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-accent .card-value {
+  color: var(--accent);
+}
+
+.card-hint {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 16px;
+}
+
+.panel {
+  padding: 16px;
+  margin-bottom: 16px;
+  min-width: 0;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table.mini,
+table.messages {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mini th,
+.mini td,
+.messages th,
+.messages td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.mini th,
+.messages th {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.messages td.body {
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #eef1f5;
+  color: var(--muted);
+}
+
+.badge-sent {
+  background: #e3f4ea;
+  color: var(--ok);
+}
+
+.badge-blocked,
+.badge-failed {
+  background: #fdecec;
+  color: var(--bad);
+}
+
+.badge-deferred {
+  background: #fdf3e1;
+  color: var(--warn);
+}

@@ -1,0 +1,4 @@
+email,first_name,last_name,phone,timezone,signed_up_at
+maria.lopez@example.com,Maria,Lopez,+15550100001,America/Chicago,2026-03-02T15:04:00Z
+dan.okafor@example.com,Dan,Okafor,,America/New_York,2026-05-18T09:30:00Z
+not-an-email,Broken,Row,,America/Denver,2026-06-01T10:00:00Z
